@@ -25,8 +25,11 @@
                 }
             </var>
 
-            <var id="SPEED1">REASONABLESPEED(VEHC1)</var>
-            <var id="SPEED2" data-ensure="SPEED2 !== SPEED1">REASONABLESPEED(VEHC2)</var>
+            <div class="vars" data-ensure="abs(SPEED1 - SPEED2) > 1">
+                <!--constraint so difference is more than one and thus RNG for avg cannot be forced to return a value equal to either of the speeds-->
+                <var id="SPEED1">REASONABLESPEED(VEHC1)</var>
+                <var id="SPEED2">REASONABLESPEED(VEHC2)</var>
+            </div>
             <var id="AVG">SPEED1 &lt; SPEED2 ? randRange(SPEED1 + 1, SPEED2 - 1) : randRange(SPEED2 + 1, SPEED1 - 1)</var>
             <var id="TIME">randRange(1, 9)</var>
             <var id="DIST">AVG * TIME</var>
